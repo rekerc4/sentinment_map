@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>Twitter Sentiments App</title>
+</head>
+<body>
+    <!-- <a href="#!/landing">Landing</a>
+    <a href="#!/twitter-map">Tweets</a> -->
+
+    <ng-view class="view-animate"></ng-view>
+
+    <script>window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+          t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      
+        t._e = [];
+        t.ready = function(f) {
+          t._e.push(f);
+        };
+      
+        return t;
+      }(document, "script", "twitter-wjs"));
+    </script>
+    <script src="https://code.angularjs.org/1.6.5/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular-animate.js"></script>
+    <script src="https://code.angularjs.org/1.6.5/angular-route.min.js"></script>
+    <script src="module.js"></script>
+    <script src="config.js"></script>
+    <script src="twitterMap.js"></script>
+    <script src="twitterService.js"></script>
+    <script src="map/mapdata.js"></script>
+    <script src="map/usmap.js"></script>
+    <script src="landing.js"></script>
+
+</body>
+</html>
+

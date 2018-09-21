@@ -1,0 +1,594 @@
+#map_inner > div:nth-child(2), #map_inner > div:nth-child(3), #map_inner > div:nth-child(4) {
+    visibility: hidden !important;
+}
+
+html{
+    height: 100%; 
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+    height: 100%; 
+}
+
+.hide{
+    display: none; 
+}
+
+.statetext{
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+    padding: 10px;
+    text-align: center;
+}
+
+.twitterPage{
+    background: #1DA1F2;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.mapContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.us_map {
+    justify-content: center;
+    background-color: white;
+    margin: 5%;
+    display: flex;
+    border-radius: 5px;
+}
+
+#map_inner {
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.colorGuide{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: -20px;
+    background-color: white;
+    border-radius: 5px;
+    align-items: center;
+    margin: 0% 5%;
+    color: black;
+}
+
+.guideItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 200;
+    color: white;
+    text-align: center;
+}
+
+.tweets{
+    color: white;
+    font-size: 15px;
+    margin: 5%;
+}
+
+.discover{
+    text-align: center;
+    border-top: 3px solid white;
+    margin: 20px;
+    color: white;
+}
+
+.discover_text {
+    font-size: 18px;
+    margin: 10px 5px 0px 5px;
+    /* border-bottom: 3px solid white; */
+}
+
+.emotion-circles{
+    display: flex;
+    width: 30px;
+    height: 30px;
+    flex-direction: column;
+    border-radius: 50%;
+}
+
+#sad{
+    background: #F9CDAC;
+}
+#fear{
+    background: #F3ACA2;
+}
+#bored{
+   background:  #EE8B98;
+}
+#happy{
+    background: #E96A8D;
+}
+#excited{
+    background: #B8428C;
+}
+#sarcasm{
+    background: #973490;
+}
+#angry{
+    background: #742796;
+}
+
+/* This is the Styling for the Landing Page */
+.landingHold {
+    height: 100%; 
+    display: block; 
+    background-color: white;
+}
+
+.landingContainer {
+    position: relative;
+ 
+    background-color: white;
+
+    height: 250px;
+    width: 250px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%; 
+}
+
+.whiteCircle {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: white;
+    border-radius: 50%;
+    height: 250px;
+    width: 250px;
+    margin: 0 auto;
+    border: 2px solid #1DA1F2;
+    z-index: 999999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.landingH {
+    font-size: 20px;
+    font-weight: 400;
+    color: black;
+    margin: 0px;
+}
+
+.landingP {
+    font-size: 20px;
+    font-weight: 200;
+    color: #1DA1F2;
+    padding: 10px;
+}
+
+.landingBtn {
+    /* position: absolute;
+    top: 80%;
+    left: 20%; */
+    border-radius: 52px;
+    height: 66px;
+    width: 60%;
+    justify-content: center;
+    font-size: 18px;
+    background-color: #fff;
+    color: #1DA1F2;
+    border: 2px #1DA1F2 solid;
+}
+
+.circlesContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.move{
+    height: 100%;
+    width: 250px;
+}
+
+.circle {
+    border-radius: 50%;
+    background-color: deepskyblue;
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    /* top: 27%;
+    left: 10%; */
+    opacity: 0;
+    animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+}
+
+.birds{
+    position: absolute;
+    transform: translate(-50%, -50%); 
+    top: 50%; 
+    left: 50%; 
+    height: 100%; 
+    width: 100vw; 
+}
+
+.bird{
+    position: absolute; 
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    color: #5d91e3;
+}
+
+#bird1{
+    animation-name: fly;
+    animation-delay: 0.5s;
+    animation-timing-function: linear; 
+    animation-duration: 2s; 
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+}
+#bird2{
+    animation-name: fly2;
+    animation-delay: 3s;
+    animation-timing-function: linear; 
+    animation-duration: 3s; 
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+}
+#bird3{
+    animation-name: fly3;
+    animation-delay: 1.5s;
+    animation-timing-function: linear; 
+    animation-duration: 3s; 
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+}
+#bird4{
+    animation-name: fly4;
+    animation-delay: 1s;
+    animation-timing-function: linear; 
+    animation-duration: 3s; 
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+}
+#bird5{
+    animation-name: fly5;
+    animation-delay: 2s;
+    animation-timing-function: ease-out; 
+    animation-duration: 3s; 
+    animation-play-state: paused;
+    
+}
+#bird6{
+    animation-name: fly6;
+    animation-delay: 2.5s;
+    animation-timing-function: ease-out; 
+    animation-duration: 3s; 
+    animation-play-state: paused;
+    
+}
+
+.xMover{
+    position: absolute;
+    transform: translate(-50%, -50%); 
+    top: 50%; 
+    left: 50%; 
+    animation-name: xtrans; 
+    animation-delay: 4s; 
+    animation-timing-function: linear; 
+    animation-duration: 1s; 
+    animation-play-state: paused;
+    animation-fill-mode: forwards; 
+}
+
+.bigbird{
+    animation-name: bigfly; 
+    animation-delay: 4s; 
+    animation-timing-function: linear; 
+    animation-duration: 1s; 
+    animation-play-state: paused; 
+    animation-fill-mode: forwards; 
+}
+
+@keyframes bigfly{
+    0%{transform: translateY(-50%)}
+    25%{transform: translateY(-100%)}
+    50%{transform: translateY(-200%)}
+    75%{transform: translateY(-400%)}
+    100% {transform: translateY(-700%)}
+}
+
+@keyframes xtrans{
+    0%{transform: translateX(-50%)}
+    25%{transform: translateX(50%)}
+    50%{transform: translateX(150%)}
+    75%{transform: translateX(250%)}
+    100% {transform: translateX(350%)}
+}
+
+/* @keyframes xtrans{
+    from {transform: translateX(-50%)}
+    to {transform: translateX(250%)}
+} */
+
+@keyframes fly {
+    0% {transform: translate(-50%, -50%)}
+    50% {transform: translate(750%, -200%)}
+    75% {transform: translate(1050%, -200%)}
+    100% {transform: translate(2750%, -220%)}
+}
+
+@keyframes fly2 {
+    0% {transform: translate(-50%, -50%)}
+    50% {transform: translate(-1800%, -1200%)}
+    75% {transform: translate(-2400%, -2000%)}
+    100% {transform: translate(-2800%, -2200%)}
+}
+
+@keyframes fly3 {
+    0% {transform: translate(-50%, -50%)}
+    50% {transform: translate(1750%, -1200%)}
+    75% {transform: translate(2350%, -2000%)}
+    100% {transform: translate(2750%, -2200%)}
+}
+
+@keyframes fly4 {
+    0% {transform: translate(-50%, -50%)}
+    50% {transform: translate(-1800%, -1200%)}
+    75% {transform: translate(-2400%, -2000%)}
+    100% {transform: translate(-2800%, -2200%)}
+}
+
+@keyframes fly5 {
+    from {transform: translate(-50%, -50%)}
+    to {transform: translate(-3000%, -50%)}
+    
+}
+
+@keyframes fly6 {
+    from {transform: translate(-50%, -50%)}
+    to {transform: translate(2950%, -50%)}
+}
+
+
+@keyframes scaleIn {
+from {
+    transform: scale(.5, .5);
+    opacity: .75;
+}
+to {
+    transform: scale(2.5, 2.5);
+    opacity: 0;
+}
+}
+
+/* Color Key */
+
+.colorSize {
+    /* border-radius:50%; */
+    /* display: flex; */
+    /* margin: 0 auto; */
+    /* justify-content: center; */
+    /* width: 90%;
+    height: 150px; */
+    position: fixed;
+    /* transform: translate(-50%, -50%); */
+    left: 5%;
+    top: 40%;
+    opacity: .65;
+    z-index: -99;
+}
+  
+.landingRed {
+    background-color:  #ff3351;
+    width: 90%;
+    height: 150px;
+    border-radius:50%;
+}
+  
+.landingRedOrange {
+    background-color:  #ff471b;
+    transform: rotate(25.7deg);
+    width: 90%;
+    height: 150px;
+    border-radius:50%;
+}
+  
+.landingOrange {
+    background-color:  #ff951a;
+    transform: rotate(51.4deg);
+    width: 90%;
+    height: 150px;
+    border-radius:50%;
+}
+  
+.landingYellow {
+    background-color:  #ffd21b;
+    transform: rotate(77.1deg);
+    width: 90%;
+    height: 150px;
+    border-radius:50%;
+}
+  
+.landingGreen{
+    background-color:  #52b05d;
+    transform: rotate(102.8deg);
+    width: 90%;
+    height: 150px;
+    border-radius:50%;
+}
+  
+.landingAqua {
+    background-color:  #52e0bb;
+    transform: rotate(128.5deg);
+    width: 90%;
+    height: 150px;
+    border-radius:50%;
+}
+  
+.landingBlue {
+    background-color: #5d91e3;
+    transform: rotate(154.2deg);
+    width: 90%;
+    height: 150px;
+    border-radius:50%;
+}
+
+/* ng-view Transitions */
+
+.view-animate {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-height: 100%;
+    opacity: 1;
+    height: 100%;
+    background: #1DA1F2;
+}
+
+.view-animate.ng-enter,
+.view-animate.ng-leave {
+    transition: all 0.5s ease-out;
+}
+.view-animate.ng-enter {
+    opacity: 0;
+
+    /* animation: 2s linear normal slide; */
+
+}
+.view-animate.ng-enter-active {
+    opacity: 1;
+}
+.view-animate.ng-leave-active {
+    opacity: 0;
+} 
+
+@keyframes slide {
+0% {top: 100%;}
+10% {top: 90%;}
+20% {top: 80%;}
+30% {top: 70%;}
+40% {top: 60%;}
+50% {top: 50%;}
+60% {top: 40%;}
+70% {top: 30%;}
+80% {top: 20%;}
+90% {top: 10%;}
+100% {top: 0%;}
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    height: 100vh;
+    overflow-y: auto;
+}
+/* iPhone 5/SE */
+@media only screen and (min-width: 320px) {
+    .landingP {
+        font-size: 17px;
+    }
+    .landingBtn {
+        top: 80%;
+        position: absolute;
+    }
+}
+
+/* Galexy S5 */
+@media only screen and (min-width: 360px) {
+
+}
+
+/* iPhone 6/7/8 */
+@media only screen and (min-width: 375px) {
+
+
+/* iPad */
+@media only screen and (min-width: 768px) {
+
+    .whiteCircle {
+        /* position: absolute;
+        top: 23%;
+        left: 15%; */
+        height: 400px;
+        width: 400px;
+    }
+    .move{
+        height: 100%;
+        width: 400px;
+    }
+    .circle {
+        width: 400px;
+        height: 400px;
+    }
+    .landingBtn {
+        border-radius: 80px;
+        height: 85px;
+        font-size: 33px;
+        top: 80%;
+        position: absolute;
+    }
+    .landingP {
+        font-size: 28px;
+    }
+    .landingContainer{
+        position: relative;
+        height: 400px;
+        width: 400px;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+    }
+}
+
+/* Pixel 2 XL */
+@media only screen and (min-width: 411px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    #mapContainer {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+    }
+    .twitterPage{
+        text-align: center;
+        display: flex;
+        flex-direction: row; 
+    }
+    .tweets{
+        margin: 1.5% 2% 0% 0%;
+    }
+} 
+
+/* iPad Pro */
+@media only screen and (min-width: 1023px) {
+  }
+
+/* small laptop */
+@media only screen and (min-width: 1440px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    
+
+}
