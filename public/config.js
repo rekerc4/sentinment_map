@@ -10,4 +10,4 @@ angular
             })
             .otherwise({redirectTo: "/landing"});
     }
-])
+])//configures angular routes for single page app. 

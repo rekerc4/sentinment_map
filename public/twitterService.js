@@ -3,7 +3,7 @@
 function TwitterService ($http, $sce, $timeout) {
     const vm = this;
 
-    
+/*Object that stores twitter place ids for each state.*/   
 const states =  {
         "AL": "288de3df481163e8", 
         "AK": "07179f4fe0500a32",
@@ -57,6 +57,7 @@ const states =  {
         "WY": "5669366953047e51"
     }
 
+    /*Object to store the average of text to sentiment api*/
     const avgStore =  {
         "AL": null, 
         "AK": null,
@@ -110,7 +111,7 @@ const states =  {
         "WY": null
     }
 
-
+    /*Test object for smallStates case used in development to avoid rate limits of twitter search api. */
     const smallStates = {
         "AL": "288de3df481163e8", 
         "AZ": "a612c69b44b2e5da",
@@ -120,6 +121,7 @@ const states =  {
         "MI": "67d92742f1ebf307",
     }
 
+    /*Object that stores states full name with state abbr. as keys */
     vm.fullName = {
         "AL": "Alabama", 
         "AK": "Alaska",
@@ -175,46 +177,41 @@ const states =  {
     
 
     let deStringify = function(obj) {
-        // console.log(obj);
+ 
         var str = [];
         for(var p in obj)
         str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-        // console.log(p); 
+
         return str.join("&");
-    }
+    }//Used as transform request to conteract angular http request applying stringify to data sent to apis by it. 
 
-
+    /*Takes array of most expressed emotions for tweets sent to text to emotion api and finds most prevelant emotion for state.*/
     vm.topEmotion = (emotionArr) => {
         let counts = {};
         let compare = 0;
         let mostFrequent = 0;
         let stateEmotion = emotionArr; 
-        // console.log(emotionArr.length);
-        for(let i = 0, len = stateEmotion.length; i < len; i++){
-            // console.log("running");
-            let word = vm.stateEmotion[i];
+        for(let i = 0, len = stateEmotion.length; i < len; i++){//loops through array of top emotions for tweets in a given state.
+            let word = vm.stateEmotion[i];//set current emotion to word.
             if (counts[word] === undefined){
                 counts[word] = 1;
             } else {
-                counts[word] = counts[word] + 1;
+                counts[word] = counts[word] + 1;//sets value for number of times the emotion appears in array of top emotions adding 1 each time a given emotion is found.
             }
             if (counts[word] > compare){
-                compare = counts[word];
-                mostFrequent =  stateEmotion[i];
+                compare = counts[word];//sets the number to be compared to the number of times the most frequent emotion expressed so far has been expresed. 
+                mostFrequent = stateEmotion[i];//sets the mostFrequent variable to the name of the most frequent emotion expressed so far. 
             }
         }
-            return mostFrequent;
+            return mostFrequent;//function returns the most frequently expressed emotion in array of emotions. 
     }
 
+    /*Set background color of states on map of USA to color based on the average sentinment of top 10 tweets in each state. */
     vm.averageSorter = (num, state) => {
         let avg = num; 
         let ret = state; 
 
         if(avg > 2.5){
-            let upAvg = avg * 100; 
-            let lightness = 180 - (Math.log(avg) * 2); 
-            // console.log(avg + "  " + upAvg + "   " + ret);
-            // console.log(typeof lightness + "  " + lightness);
             let color = `#742796`;  
             simplemaps_usmap_mapdata.state_specific[ret].color = color; 
             simplemaps_usmap.refresh_state(ret)
@@ -247,17 +244,6 @@ const states =  {
         }
     }
 //  this function populates the colors on the map upon loading
-
-    vm.tester = () => {
-        return $http({
-            medthod: "GET", 
-            url: "/search/all"
-        }).then((response) => {
-            console.log(response); 
-        })
-    }
-
-    setInterval(vm.tester, 5000); 
   
     vm.getAllTweets = () => {  
             return $http({
