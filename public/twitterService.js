@@ -1,6 +1,6 @@
 "use strict";
 
-function TwitterService ($http, $sce, $timeout) {
+function TwitterService ($http, $sce, $timeout) {//inject http sce and timeout. sce and timeout were previously used http is currently used. 
     const vm = this;
 
 /*Object that stores twitter place ids for each state.*/   
@@ -245,6 +245,7 @@ const states =  {
     }
 //  this function populates the colors on the map upon loading
   
+/* Sends to the router endpoint search/all/ and to get an object containing tweets of all states and states text to sentiment scores and averages*/
     vm.getAllTweets = () => {  
             return $http({
             method: "GET",
@@ -255,8 +256,7 @@ const states =  {
            
             for(let i = 0; i < stateKeys.length; i++){
                 let stateAvg = response.data[stateKeys[i]].avg; 
-                let state = stateKeys[i]; 
-                //stateAverage = vm.averager(indStateSentiment); 
+                let state = stateKeys[i];  
                 vm.averageSorter(stateAvg, state);  
             }
          });
@@ -264,12 +264,10 @@ const states =  {
     vm.getAllTweets();
 
   
-   
+   /*On click of states on US map send to router endpoint /state/ with the states abbr. and get current top tweets from the state.
+     then send each tweet to a text to emotion api and wait for the reutrn for each tweet to be pushed into a new array and sent to a top emotion sorter to get the top emotion expressed in the states tweet. */
     vm.getState = (state) => {
         let theState = states[state]; 
-        let stateAb = state;
-        console.log(theState);
-   
         return $http({
             method: "GET",
             url: "/state/" + theState
@@ -279,12 +277,12 @@ const states =  {
                 vm.stateData = { emotion: [], text: []};
                 for (let i = 0; i < response.data.text.length; i++) {
                     vm.loopThroughTweets(response.data.text[i]);
-                }
+                }//loop through all tweets and return http call for each before moving forward. 
                 resolve(vm.stateData);
             });
             p.then((response) => {
                 console.log(response); 
-                let emData = vm.topEmotion(response);
+                let emData = vm.topEmotion(response);//send the loopthroughtweets response to topEmotion function. 
                 console.log(emData); 
                 return response;
             });
@@ -306,20 +304,20 @@ const states =  {
             },
             transformRequest: deStringify
         }).then((response) => {
-            vm.stateData.emotion.push(response.data.emotion);
-            vm.stateData.text.push(response.config.data.text);
+            vm.stateData.emotion.push(response.data.emotion);//push emotions of tweets of clicked on state to global stateData object.
+            vm.stateData.text.push(response.config.data.text);//push text analyzed by text to emotion api to global stateData object. 
         });
     };
 
 // To Embed Tweets
     vm.embedTweets = (state) => {
         let theState = states[state];
-        return $http({
+        return $http({//get current top tweets for clicked on state. 
             method: "GET",
             url: "/state/" + theState
         }).then((response) => {
             console.log(response);
-            return response;
+            return response;//return top tweets for clicked on state. 
         })
     }
 }
